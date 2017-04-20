@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Search</title>
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/insestyle.css">
+    <script src="https://use.fontawesome.com/22eceefc05.js"></script>
+</head>
+
+<body>
+    <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+        <!-- Close button -->
+        <button class="close-button" aria-label="Close menu" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        <!-- Menu -->
+        <ul class="vertical menu">
+            <!-- Link to home page (index.html) -->
+            <li><a href="index.html">Home</a></li>
+            <!-- Link to login page (login.html) -->
+            <li><a href="login.html">Login</a></li>
+            <!-- Link to register page (register.html) -->
+            <li><a href="register.html">Register</a></li>
+            <!-- Link to profile page (profile.html) -->
+            <li><a href="profile.html">Profile</a></li>
+            <!-- Link to Event page (searchresults.html) -->
+            <li><a href="searchresults.html">Event</a></li>
+            <li id="logout"><a href="#">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="off-canvas-content" data-off-canvas-content>
+
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <button type="button" class="button" data-toggle="offCanvas"> <i class="fa fa-bars" aria-hidden="true"></i> </button>
+                <a href="login.html"><i class="fa fa-user fa-2x show-for-small-only" aria-hidden="true"></i></a>
+            </div>
+            <div class="top-bar-right">
+                <ul class="menu">
+                    <!-- Search Bar -->
+                    <li><input class="show-for-medium" type="search" placeholder="Search" id="search-large"></li>
+                    <!-- Go button -->
+                    <!-- Link to searchresults.html -->
+                    <li><button type="button" class="button show-for-medium" id="search-button">Go!</button></li>
+                    <li><button onclick="window.location.href='/profile.html'" type="button" class="button show-for-medium" id="user-display"></button></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-12 columns small-search">
+                <div class="input-group show-for-small-only">
+                    <input class="input-group-field" type="text" placeholder="Search">
+                    <div class="input-group-button">
+                        <input type="submit" class="button" value="Go!">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Page Content-->
+        <div class="row">
+          <div class="large-12 columns" id="searched-for">
+            <h2>Showing results for: <span id="searched">Alphabetically sorted</span></h2>
+          </div>
+        </div>
+
+        <div class="row search-result" id="search-result1">
+            <div class="large-6 columns" id="event-img">
+                <img id="event-img1" src="http://placehold.it/485x225" alt="a placeholder image for events">
+            </div>
+
+            <div class="large-6 columns" id="title-desc">
+                <h3 id="search-title1">loading...</h3>
+                <p id="search-desc1">loading...</p>
+            </div>
+        </div>
+
+        <div class="row search-result" id="search-result2">
+            <div class="large-6 columns" id="event-img">
+                <img id="event-img2" src="http://placehold.it/485x225" alt="a placeholder image for events">
+            </div>
+
+            <div class="large-6 columns" id="title-desc">
+                <h3 id="search-title2">loading...</h3>
+                <p id="search-desc2">loading...</p>
+
+            </div>
+        </div>
+
+        <div class="row search-result" id="search-result3">
+            <div class="large-6 columns" id="event-img">
+                <img id="event-img3" src="http://placehold.it/485x225" alt="a placeholder image for events">
+            </div>
+
+            <div class="large-6 columns" id="title-desc">
+                <h3 id="search-title3">loading...</h3>
+                <p id="search-desc3">loading...</p>
+            </div>
+        </div>
+
+
+        <div class="row search-result" id="search-result4">
+            <div class="large-6 columns" id="event-img">
+                <img id="event-img4" src="http://placehold.it/485x225" alt="a placeholder image for events">
+            </div>
+
+            <div class="large-6 columns" id="title-desc">
+                <h3 id="search-title4">loading...</h3>
+                <p id="search-desc4">loading...</p>
+            </div>
+        </div>
+
+        <div class="row search-result" id="search-result5">
+            <div class="large-6 columns" id="event-img">
+                <img id="event-img5" src="http://placehold.it/485x225" alt="a placeholder image for events">
+            </div>
+
+            <div class="large-6 columns" id="title-desc">
+                <h3 id="search-title5">loading...</h3>
+                <p id="search-desc5">loading...</p>
+            </div>
+        </div>
+
+        <!--Footer-->
+        <div class="row">
+            <div class="large-12 columns" id="footer-icons">
+                <a href="#"><i class="fa fa-envelope-square fa-4x" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-twitter-square fa-4x" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-github-square fa-4x" aria-hidden="true"></i></a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-12 columns" id="footer-text">
+                <p>Copyright text and stuff will go here most likely</p>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/searchresults.js"></script>
+    <script src="assets/js/login-verifier.js"></script>
+</body>
+
+</html>

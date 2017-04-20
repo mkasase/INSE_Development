@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookit Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/insestyle.css">
+    <script src="https://use.fontawesome.com/22eceefc05.js"></script>
+</head>
+
+<body>
+    <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+        <!-- Close button -->
+        <button class="close-button" aria-label="Close menu" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        <!-- Menu -->
+        <ul class="vertical menu">
+            <!-- Link to home page (index.html) -->
+            <li><a href="index.html">Home</a></li>
+            <!-- Link to login page (login.html) -->
+            <li><a href="login.html">Login</a></li>
+            <!-- Link to register page (register.html) -->
+            <li><a href="register.html">Register</a></li>
+            <!-- Link to profile page (profile.html) -->
+            <li><a href="profile.html">Profile</a></li>
+            <!-- Link to Event page (searchresults.html) -->
+            <li><a href="searchresults.html">Event</a></li>
+            <li id="logout"><a href="#">Logout</a></li>
+            <!--<li id="user-display">Login to see your username!</li>-->
+        </ul>
+    </div>
+
+    <div class="off-canvas-content" id="bookit" data-off-canvas-content>
+
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <button type="button" class="button" data-toggle="offCanvas"> <i class="fa fa-bars" aria-hidden="true"></i> </button>
+                <a href="login.html"><i class="fa fa-user fa-2x show-for-small-only" aria-hidden="true"></i></a>
+            </div>
+            <div class="top-bar-right">
+                <ul class="menu">
+                    <!-- Search Bar -->
+                    <li><input class="show-for-medium" type="search" placeholder="Search" id="search-bar"></li>
+                    <!-- Go button -->
+                    <!-- Link to searchresults.html -->
+                    <li><a href="searchresults.html"><button type="button" class="button show-for-medium" id="searchButton">Go!</button></a></li>
+                    <!--<li><a href="login.html"><i class="fa fa-user fa-2x show-for-medium" aria-hidden="true"></i></a></li>-->
+                    <li><button onclick="window.location.href='/profile.html'" type="button" class="button show-for-medium" id="user-display"></button></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-12 columns small-search">
+                <div class="input-group show-for-small-only">
+                    <input class="input-group-field" type="text" placeholder="Search" id="search-bar">
+                    <div class="input-group-button">
+                        <input type="submit" class="button" value="Go!" id="searchButton">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Page Content-->
+        <div class="row">
+            <div class="large-12 columns" id="frontpage_banner">
+                <img src="assets/img/SoftEngLogo.png" alt="some_text" id="bookit_logo" class="animated bounceInDown">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-12 columns" id="bookit_heading">
+                <h2>BookIt</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-12 columns" id="bookit_subheading">
+                <h3>The only place to book the best tickets in town</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="orbit" role="region" aria-label="Scrolling Images" data-orbit>
+                <ul class="orbit-container">
+                    <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+                    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
+                    <li class="is-active orbit-slide">
+                        <img class="orbit-image" src="http://placehold.it/1920x1080" alt="Placeholder">
+                        <figcaption class="orbit-caption">Encapsulating</figcaption>
+                    </li>
+                    <li class="orbit-slide">
+                        <img class="orbit-image" src="http://placehold.it/1920x1080" alt="Placeholder">
+                        <figcaption class="orbit-caption">Amazing</figcaption>
+                    </li>
+                    <li class="orbit-slide">
+                        <img class="orbit-image" src="http://placehold.it/1920x1080" alt="Placeholder">
+                        <figcaption class="orbit-caption">Wow</figcaption>
+                    </li>
+                    <li class="orbit-slide">
+                        <img class="orbit-image" src="http://placehold.it/1920x1080" alt="Placeholder">
+                        <figcaption class="orbit-caption">Incredible</figcaption>
+                    </li>
+                </ul>
+                <nav class="orbit-bullets">
+                    <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+                    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+                    <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+                    <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+                </nav>
+            </div>
+        </div>
+        <!--Footer-->
+        <div class="row">
+            <div class="large-12 columns" id="footer-icons">
+                <a href="#"><i class="fa fa-envelope-square fa-4x" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-twitter-square fa-4x" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-github-square fa-4x" aria-hidden="true"></i></a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-12 columns" id="footer-text">
+                <p>Copyright text and stuff will go here most likely</p>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/index.js"></script>
+    <script src="assets/js/login-verifier.js"></script>
+    <script type="assets/js/searchresults.js"></script>
+</body>
+
+</html>

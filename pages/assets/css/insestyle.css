@@ -1,0 +1,501 @@
+/* General Styling */
+
+.row {
+    max-width: none;
+    width: 100%;
+}
+
+/*Loading*/
+
+.spinner {
+  margin: 100px auto;
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.spinner > div {
+  background-color: #333;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+
+  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+  20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes sk-stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% {
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}
+
+
+/* Top Bar and Menu Styling */
+
+.off-canvas-wrapper {
+    background-color: #191919;
+}
+
+.off-canvas {
+    background-color: #191919;
+    color: white;
+}
+
+.off-canvas a {
+    color: white;
+}
+
+.off-canvas a:hover {
+    color: #6AE69E;
+}
+
+@media(max-width: 640px) {
+    .show-for-small-only.fa {
+        float: right;
+        padding-right: 2rem;
+    }
+    .small-search {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .input-group {
+        margin: 0;
+    }
+    .input-group-button input {
+        background-color: #6AE69E;
+        color: black;
+    }
+    .input-group-button input:hover {
+        background-color: #6AE69E;
+        color: black;
+    }
+}
+
+.top-bar {
+    background-color: #191919;
+}
+
+.top-bar-left {
+    background-color: #191919;
+}
+
+.top-bar-right {
+    background-color: #191919;
+    padding-top: 5px;
+}
+
+.top-bar-right .menu {
+    background-color: #191919;
+}
+
+.top-bar .button {
+    background-color: #191919;
+}
+
+.top-bar .button:hover {
+    background-color: #6AE69E;
+}
+
+
+/* Index Styling */
+
+#frontpage_banner {
+    margin: 0;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+    text-align: center;
+    background-image: url(https://images.unsplash.com/photo-1465056836041-7f43ac27dcb5?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=42b2cd0f8dff6cebaf8d8fe3fa278a9e);
+    background-size: cover;
+    background-position: center;
+}
+
+#bookit_logo {
+    height: 20rem;
+}
+
+#bookit_heading {
+    padding-top: 7rem;
+    text-align: center;
+    background-color: #191919;
+    color: white;
+}
+
+#bookit_subheading {
+    text-align: center;
+    padding-bottom: 7rem;
+    background-color: #191919;
+    color: white;
+}
+
+.orbit-bullets {
+    margin: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #191919;
+}
+
+.orbit img {
+    height: 40rem;
+}
+
+
+/* Footer Styling */
+
+#footer-icons {
+    padding-top: 2rem;
+    height: 10rem;
+    background-color: #191919;
+    text-align: center;
+}
+
+#footer-text {
+    background-color: #191919;
+    text-align: center;
+    color: white;
+}
+
+.fa {
+    color: white;
+    padding: 1rem;
+}
+
+.fa:hover {
+    color: #6AE69E;
+}
+
+
+/*Login and register styling*/
+
+#logreg-heading {
+    text-align: center;
+    padding-top: 9rem;
+    padding-bottom: 1.35rem;
+}
+
+#logreg-form {
+    padding-top: 2rem;
+    padding-left: 40rem;
+    padding-right: 40rem;
+}
+
+#logreg-button {
+    text-align: center;
+}
+
+#logreg-button .button {
+    background-color: #6AE69E;
+    color: black;
+    font-size: 1.25rem;
+}
+
+#logreg-member {
+    text-align: center;
+    padding-bottom: 9.5rem;
+}
+
+#logreg-member a {
+    color: #6AE69E;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #909;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #909;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #909;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #909;
+}
+
+@media (max-width: 1600px) {
+    #logreg-heading {
+        text-align: center;
+        padding-top: 5rem;
+        padding-bottom: 0.5rem;
+    }
+    #logreg-form {
+        padding-top: 2rem;
+        padding-left: 25rem;
+        padding-right: 25rem;
+    }
+    #logreg-button {
+        text-align: center;
+    }
+    #logreg-member {
+        text-align: center;
+        padding-bottom: 5rem;
+    }
+}
+
+@media(max-width: 1200px) {
+    #logreg-form {
+        text-align: center;
+        padding-left: 10rem;
+        padding-right: 10rem;
+    }
+}
+
+@media(max-width: 600px) {
+    #logreg-form {
+        text-align: center;
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+}
+
+@media(max-width: 350px) {
+    #logreg-form {
+        text-align: center;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+
+/* Profile Styling */
+
+@media (max-width: 1920px) {
+    #profile_image_wrap img {
+        border-radius: 50%;
+        width: 24rem;
+        height: 24rem;
+    }
+    #profile_image_wrap {
+        text-align: center;
+        padding: 0;
+        padding-top: 3.6rem;
+        padding-bottom: 3rem;
+    }
+    #customer_details_wrap {
+        text-align: center;
+        padding-bottom: 3.6rem;
+    }
+}
+
+@media(max-width: 1025px) {
+    #profile_image_wrap img {
+        border-radius: 50%;
+        width: 18rem;
+        height: 18rem;
+    }
+    #profile_image_wrap {
+        text-align: center;
+        padding: 0;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    #customer_details_wrap {
+        text-align: center;
+        padding-bottom: 3rem;
+    }
+}
+
+
+/*Event Page Styling*/
+#event-date{
+    padding: 0 !important;
+}
+
+#event_location{
+    padding-bottom: 2rem;
+}
+
+#event_capacity{
+    padding: 0 !important;
+    padding-bottom: 1rem;
+}
+
+#event_heading {
+    text-align: center;
+    padding-top: 4rem;
+}
+
+#event_heading h3 {
+    font-size: 3rem;
+}
+
+#event_image {
+    text-align: center;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+#event_image img {
+    height: 20rem;
+    width: 20rem;
+    border-radius: 50%;
+}
+
+#event_description {
+    padding-left: 0 !important;
+    padding-right: 6rem;
+}
+
+#event_locations_wrap {
+    padding-left: 8rem;
+}
+
+#event_locations_wrap span {
+    padding-left: 10rem;
+}
+
+#event_info {
+    padding-bottom: 3rem;
+}
+
+@media (max-width: 1600px) {
+    #event_heading {
+        text-align: center;
+        padding-top: 2rem;
+    }
+    #event_image {
+        text-align: center;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    #event_image img {
+        height: 14rem;
+        width: 14rem;
+        border-radius: 50%;
+    }
+    #event_description {
+        padding-left: 8rem;
+    }
+    #event_locations {
+        padding-left: 8rem;
+    }
+    #event_locations span {
+        padding-left: 5rem;
+    }
+}
+ /*Search Results Styling*/
+
+#event-img img{
+  float: right;
+  padding-right: 2rem;
+  height: 225px;
+  width: 485px;
+}
+
+#title-desc{
+  padding-right: 14rem;
+}
+
+#title-desc h3{
+  padding-top: 1rem;
+}
+
+.search-result{
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+#searched-for{
+  padding-top: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+#space-filler {
+    height: 25rem;
+}
+
+.search-result:hover{
+  animation: move-toggle_frame 0.2s;
+  animation-fill-mode:forwards;
+  animation-timing-function: ease-out;
+  cursor: pointer;
+}
+
+@keyframes move-toggle_frame{
+  0%{
+    background-color: #ecf0f1;
+  }
+  100%{
+    background-color: #34495e;
+    color:white;
+  }
+}
+
+#paypal-button{
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+#ticket-container-profile{
+  width:300px;
+  height:400px;
+  border:4px;
+  border-style: inset;
+  float:right;
+  margin-right:75px;
+}
+
+#ticket-list{
+  margin: 0px;
+}
+
+#ticket-list li{
+  margin-bottom:2px;
+  list-style-type: none;
+  width:292px;
+  list-style: none;
+  font-size: 15px;
+  background-color: white;
+  color: black;
+  border-bottom: 2px;
+  border-style: inset;
+}
+
+#ticket-list li:hover{
+  animation: file-hover 0.2s;
+  animation-fill-mode:forwards;
+  animation-timing-function: ease-out;
+}
+
+
+
+@keyframes file-hover{
+  0%{
+    background-color: white;
+  }
+  100%{
+    background-color: #34495e;
+    color:white;
+  }
+}
