@@ -2,14 +2,9 @@
   @Author Shaun Porter(770117)
 */
 
-
 /*
-  Constructs ticket details using data from a server request.
-  Tickets are unique and only ones that have been previously made may be accessed.
-
-  Server:
-    Peforms GET request on /ticket for ticket details
-    Peforms GET request on /ticket/img for ticket image files
+  Constructs ticket details using fields from page as data.
+  Sends data to API to construct and initalize new ticket.
 */
 function buildTicket(){
   xhr = new XMLHttpRequest(); // Create XMLHttpRequest instance
@@ -36,7 +31,8 @@ function buildTicket(){
 
 /*
   Retreves a varable from the URL to be used as a regular value
-  @Param Value from URL to be retreved
+  @Param:
+    variable: Value from URL to be retreved
 */
 function getQueryVariable(variable)
 {

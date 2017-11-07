@@ -25,7 +25,7 @@ app.use(session({
 }));
 
 
-/*-------------------- REST Functions --------------------------- */
+/*---------------------------  REST Functions --------------------------- */
 
 //Checks if there's a currently logged in user and sends back what user is logged in.
 app.get("/user", function(req,res){
@@ -37,22 +37,28 @@ app.get("/user", function(req,res){
     res.status(200).send(req.session.login_fName);
   }
 });
+
 /*
-  If there's an active and valid login session then the website will return additonal infomation to the session
+  Checks for a active login and if true will return additonal details about the user account
+  @Session-Params
+    login_id: Unique identifier for the currently logged in user
 */
 app.get("/user/detail", function(req,res){
   var details
-  if (req.session.login_id == null){
+  if (req.session.login_id == null){ //Check to see if user is logged in
     details = {"user": "N/A", "email": "N/A", "phone": "NA"};
     res.status(401).send(details);
   }
-  else{
+  else{ // if true, the send a JSON file containing their details
     details = {"user": req.session.login_fName,"email": req.session.login_email, "phone": req.session.login_phone, "id": req.session.login_id}
     res.status(200).send(JSON.stringify(details));
   }
 });
+
 /*
   Destroys the current session of the active user and returns an error message if there's no user
+  @Session-Params:
+    login_id: Unique identifier for the currently logged in user
 */
 app.get("/user/logout", function(req,res){
   if(req.session.login_id == null){
@@ -64,7 +70,14 @@ app.get("/user/logout", function(req,res){
   }
 });
 
-//Check login details for when user logs in first time
+/*
+  Start point for the login process.
+  If credentals are correct a new session is initalized for their browser.
+  If Invalid a 404 status is sent to the browser and is then handled.
+  @Session-Params:
+    name: The account name associated with the user
+    pass: The password associated with the user
+*/
 app.post("/user/login", function(req, res){
   var connection = mysql.createConnection(sqlLogin);
   connection.query("SELECT * FROM `user` WHERE `email` = ?",[req.body.name], function(err,results,fields){
@@ -84,14 +97,25 @@ app.post("/user/login", function(req, res){
   });
 });
 
-//Register a new user
+/*
+  Registers a new user to the system.
+  Requires a fully filled out request body that is then passed to "addUserToDatabase" for processing
+  Returns a message to the client should the user be added to the system sucessfully
+  @Session-Params:
+    body: Requires a request body that is not empty.
+*/
 app.post("/user/register", function(req, res){
   addUserToDatabase(req.body);
   res.send(req.body.email + " was registered sucessfully.");
   res.end("done")
 });
 
-// Gets a users image via email
+/*
+  Grabs and sends a currently logged in users avatar.
+  Returns error message if there is no active user
+  @Session-Params:
+    login_email: The account login and email for a user
+*/
 app.get("/user/img", function(req, res, next){
   if(req.session.login_email === undefined){
     console.log("Attempt to access user resource without login")
@@ -99,21 +123,24 @@ app.get("/user/img", function(req, res, next){
   }
   var connection = mysql.createConnection(sqlLogin); //Establish connection to database
   connection.query("SELECT * FROM `user` WHERE `email` = ?",[req.session.login_email], function(err, results, fields){
-    var imageURL = results[0].profile_ref;
+    var imageURL = results[0].profile_ref; // Get the URL of the user's stored image
     if(imageURL == null){
-      res.status(200).send("No Profile");
+      res.status(200).send("No Profile"); // If there is no image, then send a message back to client.
       connection.end();
     }
     else{
       connection.end();
-      res.sendFile(__dirname + "/uploads/profile/" + imageURL);
+      res.sendFile(__dirname + "/uploads/profile/" + imageURL);// send the image itself
     }
   })
 });
+
 /*
-  POST: Inserts an image into /uploads/profile/
-  USAGE: Post image and query at /user/img/?q=<EMAIL GOES HERE>
+  Inserts an image into /uploads/profile/
+  Posts image and query at /user/img/?q=<EMAIL GOES HERE>
   To be used in sync with GET "/user/img" to allow client to request images via their email
+  @Session-Params:
+    login_email: The account login and email for a user
 */
 app.post("/user/img", upload.single("profile"), function(req, res, next){
   if(req.session.login_email === undefined){
@@ -133,12 +160,12 @@ app.post("/user/img", upload.single("profile"), function(req, res, next){
   connection.query("UPDATE user SET profile_ref = ? WHERE email = ?", [req.file.originalname, email])
   res.status(200).send(req.file.originalname + " posted and linked to " + email);
 });
+
 /*
-  GET: Gets event details from the event table
-  USAGE:
+  Gets event details from the event table
+  @Session-Params:
     eventSearch: search for a event by its name. Returns Max 5 results
     eventID: Gets a single event via it's ID
-    NOTE for the time being, the only way to add a new event is via the database
 */
 app.get("/event", function(req, res, next){
   var connection = mysql.createConnection(sqlLogin);
@@ -159,11 +186,11 @@ app.get("/event", function(req, res, next){
     return next();
   }
 });
-/*
-  Ticket Acceess
 
-  Allows get requests on events to receve tickets under a particular id.
-  Also allows to get all user events for a spesific user.
+/*
+Returns a JSON file of ticket details to the client
+@Session-Params:
+  id: Unique ID for the accosiated tickets
 */
 app.get("/ticket", function(req,res,next){
   var connection = mysql.createConnection(sqlLogin);
@@ -176,7 +203,6 @@ app.get("/ticket", function(req,res,next){
       return next();
     });
   }
-
   else if(req.query.userid){
     connection.query("SELECT * FROM `ticket` WHERE user_id = ?", [req.query.userid], function(err, results, fields){
       if(err){
@@ -188,7 +214,6 @@ app.get("/ticket", function(req,res,next){
       else{
         res.send("No results found");
       }
-
       return next()
     });
   }
@@ -198,12 +223,28 @@ app.get("/ticket", function(req,res,next){
   connection.end();
 });
 
+/*
+  Sends the associated image of an event on request
+  @Request-Params:
+    q: The id for the ticket's URL
+*/
 app.get("/ticket/img", function(req,res,next){
   if(req.query.q){
     res.sendFile(__dirname + "/uploads/event/" + req.query.q);
   }
 })
 
+/*
+  Creates a new ticket for a user to use for an event.
+  @Session-Params:
+    login_fName: Checked to ensure that there's an active session.
+  @Request-Params:
+    event_name: Name of event
+    event_date: Date of event
+    login_fname: Name of client
+    login_id: Id of client
+    event_img: URL of event image
+*/
 app.post("/ticket", function(req,res,next){
   if(req.session.login_fName){
     var connection = mysql.createConnection(sqlLogin);
@@ -234,26 +275,25 @@ app.post("/ticket", function(req,res,next){
 
 });
 
-// Create a new user entry in the database using a JSON file consisting of thier submited details.
+/*
+  Adds a user to the local mysql database using A JSON varable containing key user details
+*/
 function addUserToDatabase(user){
   var connection = mysql.createConnection(sqlLogin);
-  connection.connect();
-  connection.query("INSERT INTO user SET ?", {
-    fName: user.fName,
+  connection.connect(); // Establish connection
+  connection.query("INSERT INTO user SET ?", { // Run Query
+    fName: user.fName, // Query set values
     lName: user.lName,
     dob: user.date,
     address: user.address,
     email: user.email,
     phoneNum: user.phone,
     password: user.pass}, function(err,result){
-    if (err) throw err;
+    if (err) throw err; // if an error is encountered throw error
   });
-  connection.end();
+  connection.end();// End Connection to database
 }
 
-function addTicketToDatabase(ticket){
-
-}
 // Check to see if valid database exists
 function checkDatabase(){
   var connection = mysql.createConnection(sqlLogin);
@@ -274,7 +314,7 @@ function checkDatabase(){
   });
   connection.end();
 }
-
+// Start running the server on port 8080
 app.listen(8080, function(){
   console.log("Server started");
   console.log("");

@@ -2,11 +2,13 @@
   @Author Shaun Porter(770117)
 */
 
-// Will show who's currently logged in
+/*
+  Retreves login details from cookies to be used by the client
+*/
 function getLoginDetails(){
   var xhr = new XMLHttpRequest();
   var loginEle = document.getElementById("user-display");
-  //console.log("Getting user detials");
+
   xhr.open("GET", "/user");
   xhr.onreadystatechange = function(){
     if(xhr.readyState = XMLHttpRequest.DONE){
@@ -22,13 +24,16 @@ function getLoginDetails(){
   xhr.send();
 }
 
+/*
+  Send a request to the server to destory the session data for this active user
+*/
 function logoutUser(){
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "/user/logout");
   xhr.onreadystatechange = function(){
     if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200){
-      alert(xhr.responseText);
-      document.location.reload();
+      alert(xhr.responseText); // If user was logged out then send alert
+      document.location.reload(); // Refreshes the page to update session for page
     }
   }
   xhr.send();

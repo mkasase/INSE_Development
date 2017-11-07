@@ -1,13 +1,20 @@
 /*
-  @Author Harry Westbrook
+  @Author Harry Westbrook(785080)
 */
 
 var xhr = new XMLHttpRequest();
 
 var searchButton = document.getElementById("search-button");
 
+/*
+* Assign HTML elements for search results based on data
+* received from the database.
+*/
 function getSearchResults(){
 
+  /*
+  * Create variables referencing to page objects
+  */
   var eventSearch = document.getElementById("search-large").value;
   var searchDisplay = document.getElementById("searched");
 
@@ -51,7 +58,7 @@ function getSearchResults(){
         console.log(eventData);
 
 
-
+      //if successful populate HTML elements with data.
       if(eventData != null){
 
         if(eventSearch == null || eventSearch == ""){
@@ -62,7 +69,7 @@ function getSearchResults(){
         }
 
 
-        //first event shown
+        //assign data received to first event shown
         if(eventData[0] != null){
           if(eventData[0].image != null){
             img1.setAttribute("src", "../ticket/img?q=" + eventData[0].image);
@@ -82,13 +89,14 @@ function getSearchResults(){
           });
         }
 
+        //remove if no data returned
         else if(eventData[0] = null){
           img1.style.display = "none";
           title1.style.display = "none";
           desc1.style.display = "none";
         }
 
-        //second event shown
+        //assign data received to second event shown
         if(eventData[1] !=null){
           if(eventData[1].image != null){
             img2.setAttribute("src", "../ticket/img?q=" + eventData[1].image);
@@ -108,6 +116,7 @@ function getSearchResults(){
           });
         }
 
+        //remove if no data returned
         else if(eventData[1] = null){
           img2.style.display = "none";
           title2.style.display = "none";
@@ -115,7 +124,7 @@ function getSearchResults(){
         }
 
 
-        //third event shown
+        //assign data received to third event shown
         if(eventData[2] != null){
           if(eventData[2].image != null){
             img3.setAttribute("src", "../ticket/img?q=" + eventData[2].image);
@@ -142,7 +151,7 @@ function getSearchResults(){
           desc3.style.display = "none";
         }
 
-        //fourth event shown
+        //assign data received to fourth event shown
         if(eventData[3] != null){
           if(eventData[3].image != null){
             img4.setAttribute("src", "../ticket/img?q=" + eventData[3].image);
@@ -162,13 +171,14 @@ function getSearchResults(){
           });
         }
 
+        //remove if no data returned
         else if(eventData[3] = null){
           img4.style.display = "none";
           title4.style.display = "none";
           desc4.style.display = "none";
         }
 
-        //fifth event shown
+        //assign data received to fifth event shown
         if(eventData[4] != null){
 
           if(eventData[4].image != null){
@@ -189,6 +199,7 @@ function getSearchResults(){
           });
         }
 
+        //remove if no data returned
         else if(eventData[4] = null){
           img5.style.display = "none";
           title5.style.display = "none";
@@ -196,6 +207,7 @@ function getSearchResults(){
         }
       }
 
+      //if not successful remove HTML elements.
       else if(eventData = null){
          var searchResultsParent = getElementById("search-result");
 
@@ -203,7 +215,7 @@ function getSearchResults(){
       }
     }
 
-      else if(xhr.status == 401){
+      else(xhr.status == 401){
         var searchResultsParent = getElementById("search-result");
         searchDisplay.innerText = "No events found!";
 
@@ -232,24 +244,28 @@ function getSearchResults(){
   xhr.send(null);
 }
 
-//function that should run on click event as seen above.
+//on click of seach result go to that results event page.
 function goToEvent(eventID){
   window.location = "../event.html?eventID=" + eventID;
 }
 
+//check to see if the search bar has anything in it.
 function checkSearchBar(){
   var searchBar = document.getElementById("search-large").value;
+  //if yes run search function.
   if (searchBar != ""){
     getSearchResults();
     console.log("YES")
   }
+  //if no don't run search functions.
   else{
     alert("Please enter a search query")
     console.log("NO");
   }
 }
 
-//On click of search button show search results.
+//on click of search button show search results.
 searchButton.addEventListener("click", checkSearchBar);
 
+//on load of page get search results for whatever is in search bar.
 window.addEventListener("load", getSearchResults);
